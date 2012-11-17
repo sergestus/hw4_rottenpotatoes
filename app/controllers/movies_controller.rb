@@ -1,5 +1,15 @@
 class MoviesController < ApplicationController
 
+  def part
+    @director = Movie.find(params[:id]).director
+    #if @director != nil then
+      @movies = Movie.find_all_by_director(@director)
+    #else
+      #render :index
+    #  redirect_to :action => :index
+    #end
+  end
+
   def show
     id = params[:id] # retrieve movie ID from URI route
     @movie = Movie.find(id) # look up movie by unique ID
